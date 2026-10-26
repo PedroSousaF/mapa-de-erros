@@ -1,5 +1,5 @@
 {
-  "name": "diagnostico-erros",
+  "name": "mapa-de-erros",
   "version": "0.1.0",
   "description": "Analisa padrões de erro de estudantes e sugere conteúdos para revisão",
   "type": "module",

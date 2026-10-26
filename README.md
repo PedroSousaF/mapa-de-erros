@@ -1,4 +1,4 @@
-# diagnostico-erros
+# mapa-de-erros
 
 ## O problema
 
@@ -16,3 +16,5 @@ analisaErros([{ questaoId: 'q1', topico: 'fracoes', correta: false }]);
 ```
 
 `npm test` roda os testes. O prompt usado para gerar o esqueleto está em `docs/prompt-esqueleto.md`.
+
+Pela linha de comando: `node src/cli.js exemplos/respostas.json`.

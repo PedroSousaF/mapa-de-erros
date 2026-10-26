@@ -1,0 +1,7 @@
+[
+  { "questaoId": "q1", "topico": "fracoes", "correta": false },
+  { "questaoId": "q2", "topico": "fracoes", "correta": false },
+  { "questaoId": "q3", "topico": "fracoes", "correta": true },
+  { "questaoId": "q4", "topico": "geometria", "correta": true },
+  { "questaoId": "q5", "topico": "geometria", "correta": false }
+]

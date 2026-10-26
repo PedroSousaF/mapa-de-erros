@@ -1,4 +1,4 @@
-# diagnostico-erros
+# mapa-de-erros
 
 Ajuda estudantes a entender *por que* erram um tipo de questão: recebe o histórico de respostas,
 acha os tópicos com mais erros e sugere conteúdos para revisão. Usuários: estudantes e professores.
