@@ -1,5 +1,14 @@
 import { catalogo as catalogoPadrao } from './catalogo.js';
 
+// Faixas de .claude/skills/relatorio-de-erros/reference.md.
+const MINIMO_DE_QUESTOES = 3;
+
+export function prioridade(taxaErro) {
+  if (taxaErro >= 0.6) return 'Revisar agora';
+  if (taxaErro >= 0.3) return 'Reforçar';
+  return 'Manter';
+}
+
 // Agrupa respostas por tópico e ordena do maior para o menor percentual de erro.
 export function analisaErros(respostas, catalogo = catalogoPadrao) {
   if (!Array.isArray(respostas)) throw new Error('respostas deve ser um array');
@@ -16,6 +25,15 @@ export function analisaErros(respostas, catalogo = catalogoPadrao) {
   }
 
   return [...porTopico.values()]
-    .map((t) => ({ ...t, taxaErro: t.erros / t.total, sugestoes: t.erros > 0 ? (catalogo[t.topico] ?? []) : [] }))
+    .map((t) => {
+      const taxaErro = t.erros / t.total;
+      return {
+        ...t,
+        taxaErro,
+        prioridade: prioridade(taxaErro),
+        poucosDados: t.total < MINIMO_DE_QUESTOES,
+        sugestoes: t.erros > 0 ? (catalogo[t.topico] ?? []) : [],
+      };
+    })
     .sort((a, b) => b.taxaErro - a.taxaErro || b.erros - a.erros);
 }

@@ -17,7 +17,7 @@ Ou peça em linguagem natural: "analisa as respostas em exemplos/respostas.json 
 
 1. Copie a pasta `.claude/skills/relatorio-de-erros/` para o mesmo caminho no seu repositório.
 2. A skill chama `node src/cli.js <arquivo>`, que imprime uma linha por tópico no formato
-   `<topico>: <erros>/<total> erros (<pct>%) -> <sugestões>`. Se o seu projeto tiver outro comando,
+   `<topico>: <erros>/<total> erros (<pct>%) [<prioridade>] -> <sugestões>`. Se o seu projeto tiver outro comando,
    troque-o no `SKILL.md` e no `allowed-tools`.
 3. Ajuste as faixas de prioridade e o tom em `reference.md` para a sua turma.
 
