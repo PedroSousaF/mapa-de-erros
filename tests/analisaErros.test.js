@@ -1,6 +1,6 @@
 import { test, describe } from 'node:test';
 import assert from 'node:assert/strict';
-import { analisaErros } from '../src/analisaErros.js';
+import { analisaErros, prioridade } from '../src/analisaErros.js';
 
 const r = (topico, correta) => ({ questaoId: `${topico}${correta}`, topico, correta });
 
@@ -24,5 +24,32 @@ describe('analisaErros', () => {
   test('rejeita entrada inválida', () => {
     assert.throws(() => analisaErros('x'), /array/);
     assert.throws(() => analisaErros([{ topico: 'a' }]), /inválida/);
+  });
+
+  test('marca poucos dados só abaixo de 3 questões no tópico', () => {
+    const res = analisaErros([r('a', false), r('a', true), r('b', false), r('b', true), r('b', true)]);
+    assert.equal(res.find((t) => t.topico === 'a').poucosDados, true);
+    assert.equal(res.find((t) => t.topico === 'b').poucosDados, false);
+  });
+
+  test('devolve a prioridade do tópico pela taxa de erro', () => {
+    assert.equal(analisaErros([r('a', false), r('a', false), r('a', true)])[0].prioridade, 'Revisar agora');
+  });
+});
+
+describe('prioridade', () => {
+  test('aplica as faixas exatamente nos limites de 30% e 60%', () => {
+    assert.equal(prioridade(1), 'Revisar agora');
+    assert.equal(prioridade(0.6), 'Revisar agora');
+    assert.equal(prioridade(0.59), 'Reforçar');
+    assert.equal(prioridade(0.3), 'Reforçar');
+    assert.equal(prioridade(0.29), 'Manter');
+    assert.equal(prioridade(0), 'Manter');
+  });
+
+  test('rejeita taxa de erro fora de 0 a 1 ou que não é número', () => {
+    for (const invalida of [NaN, -0.1, 1.1, '0.5', undefined]) {
+      assert.throws(() => prioridade(invalida), /taxa de erro inválida/);
+    }
   });
 });
