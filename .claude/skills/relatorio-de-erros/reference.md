@@ -2,6 +2,8 @@
 
 ## Faixas de prioridade (pela taxa de erro do tópico)
 
+Referência para leitura: quem calcula é `src/analisaErros.js`, e a CLI já imprime o resultado. Mudou a faixa? Mude no código.
+
 | taxa de erro | prioridade | o que dizer |
 |---|---|---|
 | ≥ 60% | Revisar agora | o tópico é a maior dificuldade; comece por ele |

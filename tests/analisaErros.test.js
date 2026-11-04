@@ -46,4 +46,10 @@ describe('prioridade', () => {
     assert.equal(prioridade(0.29), 'Manter');
     assert.equal(prioridade(0), 'Manter');
   });
+
+  test('rejeita taxa de erro fora de 0 a 1 ou que não é número', () => {
+    for (const invalida of [NaN, -0.1, 1.1, '0.5', undefined]) {
+      assert.throws(() => prioridade(invalida), /taxa de erro inválida/);
+    }
+  });
 });

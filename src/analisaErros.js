@@ -4,6 +4,9 @@ import { catalogo as catalogoPadrao } from './catalogo.js';
 const MINIMO_DE_QUESTOES = 3;
 
 export function prioridade(taxaErro) {
+  if (typeof taxaErro !== 'number' || !(taxaErro >= 0 && taxaErro <= 1)) {
+    throw new Error('taxa de erro inválida: esperado número entre 0 e 1');
+  }
   if (taxaErro >= 0.6) return 'Revisar agora';
   if (taxaErro >= 0.3) return 'Reforçar';
   return 'Manter';
