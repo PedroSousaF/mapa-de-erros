@@ -8,7 +8,7 @@ try {
   try {
     respostas = JSON.parse(readFileSync(caminho, 'utf8'));
   } catch (e) {
-    throw new Error(`não foi possível ler o JSON de "${caminho}": ${e.message}`);
+    throw new Error(`não foi possível ler o JSON de "${caminho}": ${e.message}`, { cause: e });
   }
   for (const t of analisaErros(respostas)) {
     const sugestoes = t.sugestoes.length > 0 ? t.sugestoes.join('; ') : 'sem sugestões';

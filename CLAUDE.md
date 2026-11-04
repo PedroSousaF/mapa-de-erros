@@ -6,12 +6,13 @@ acha os tópicos com mais erros e sugere conteúdos para revisão. Usuários: es
 ## Stack
 
 - Node 18+, ESM (`"type": "module"`), imports com extensão `.js`
-- Testes com `node --test` + `node:assert/strict`; sem dependências externas
+- Testes com `node --test` + `node:assert/strict`; sem dependências de runtime (ESLint e TypeScript só como devDependencies)
 
 ## Comandos
 
 - `npm test` — roda os testes
 - `npm run test:watch` — testes em watch
+- `npm run verify` — lint, typecheck (`tsc` checando o JS), build (`dist/`) e testes; é o que o CI roda em todo push/PR
 
 ## Convenções
 
@@ -22,7 +23,7 @@ acha os tópicos com mais erros e sugere conteúdos para revisão. Usuários: es
 
 ## Regras
 
-- Rode `npm test` antes de dizer que terminou e cole o resultado.
+- Rode `npm run verify` antes de dizer que terminou e cole o resultado.
 - Não edite testes só para fazê-los passar.
 - Mudanças pequenas; não crie arquivos fora do que foi pedido.
 - Conteúdos sugeridos vêm de `src/catalogo.js`; nunca invente links ou materiais.
