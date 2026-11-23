@@ -9,8 +9,8 @@ test('imprime uma linha por tópico, do maior para o menor percentual de erro', 
   assert.equal(status, 0);
   assert.equal(
     stdout,
-    'fracoes: 2/3 erros (67%) -> Revisar: frações equivalentes; Praticar: soma de frações\n' +
-      'geometria: 1/2 erros (50%) -> Revisar: área e perímetro\n',
+    'fracoes: 2/3 erros (67%) [Revisar agora] -> Revisar: frações equivalentes; Praticar: soma de frações\n' +
+      'geometria: 1/2 erros (50%) [Reforçar, poucos dados] -> Revisar: área e perímetro\n',
   );
 });
 

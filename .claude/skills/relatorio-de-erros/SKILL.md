@@ -13,5 +13,5 @@ allowed-tools: Read, Bash(node src/cli.js:*)
 ## Passos
 
 1. Rode exatamente `node src/cli.js <arquivo>`. Não leia o código nem monte outro comando: a CLI já faz a análise. Se ela sair com erro, mostre a mensagem e pare.
-2. Leia `.claude/skills/relatorio-de-erros/reference.md` e escreva o relatório com as faixas de prioridade, o tom e o formato de lá.
+2. Leia `.claude/skills/relatorio-de-erros/reference.md` e escreva o relatório com o tom e o formato de lá. Use a prioridade e o "poucos dados" que a CLI imprime entre colchetes; não recalcule pelas faixas.
 3. Não edite arquivos. Sugestões de revisão vêm só da saída da CLI; nunca invente materiais.

@@ -12,7 +12,8 @@ try {
   }
   for (const t of analisaErros(respostas)) {
     const sugestoes = t.sugestoes.length > 0 ? t.sugestoes.join('; ') : 'sem sugestões';
-    console.log(`${t.topico}: ${t.erros}/${t.total} erros (${Math.round(t.taxaErro * 100)}%) -> ${sugestoes}`);
+    const rotulo = t.poucosDados ? `${t.prioridade}, poucos dados` : t.prioridade;
+    console.log(`${t.topico}: ${t.erros}/${t.total} erros (${Math.round(t.taxaErro * 100)}%) [${rotulo}] -> ${sugestoes}`);
   }
 } catch (e) {
   console.error(`Erro: ${e.message}`);
